@@ -1,0 +1,27 @@
+Method - > POST
+Url -> /api/users/register
+time -> ( 2025-05-16 _ 05:44:26.058) ....
+Type - > TypeError
+Error_message - > Cannot read properties of undefined (reading 'name')
+Steck file - > /Users/user/Desktop/YOUTUBE/backend/src/services/User.Service_.js
+Line -> 21
+END !!!
+____________________________________________________________________________________________________ 
+Method - > POST
+Url -> /api/user/movie
+time -> ( 2025-05-16 _ 06:59:18.920) ....
+Type - > TypeError
+Error_message - > Bind must be called on a function
+Steck file - > undefined
+Line -> undefined
+END !!!
+____________________________________________________________________________________________________ 
+Method - > POST
+Url -> /api/user/movie
+time -> ( 2025-05-16 _ 08:18:59.847) ....
+Type - > TypeError
+Error_message - > Cannot read properties of null (reading 'movie')
+Steck file - > /Users/user/Desktop/YOUTUBE/backend/src/midllwares/validationMidllwares_.js
+Line -> 45
+END !!!
+____________________________________________________________________________________________________ 
