@@ -33,6 +33,7 @@ export default class UserService {
         const data = await Files_Model_.find({ user_id: id })
         const user = await User_Model_.findOne({ _id: id })
         data.user = user
+        console.log(data)
         return data
     }
     async getAllUserAndFiles() {
