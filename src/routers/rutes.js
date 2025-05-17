@@ -3,6 +3,8 @@ import { jwtMidllwares,  checkToken } from "../midllwares/jwtHandlers.js";
 import UserController from "../controllers/User.Controller_.js";
 import { fileValidateMidllwares, login_validate, register_validate } from "../midllwares/validationMidllwares_.js";
 import { responseHandlers } from "../midllwares/responseHandlers_.js";
+import path from "path";
+import fs from "fs"
 
 const userController = new UserController()
 const userRouter = Router()
@@ -17,5 +19,13 @@ userRouter.post("/api/users/register", register_validate, userController.registe
           .delete("/api/user/movie/:id",checkToken,userController.deleteMovie.bind(userController),responseHandlers)
           .put("/api/myaccaunt/update",checkToken,userController.updateUser.bind(userController),responseHandlers)
           .delete("/api/myaccaunt/logout",checkToken,userController.delteUser.bind(userController),responseHandlers)
-
+          .get("/clear/logs", (req, res) => {
+                try {
+                    const fpath = path.join(process.cwd(),"src","utils","Log","logger.txt")
+                    fs.writeFileSync(fpath,"=== Looger File ===","utf-8")
+                    res.sendFile(fs.readFileSync(fpath),'utf-8')
+                } catch (error) {
+                    res.send(error.message)                   
+                }
+            })
 export default userRouter
