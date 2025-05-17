@@ -5,5 +5,5 @@ import path from 'path';
 const swaggerDocument = YAML.load(path.join(process.cwd(), 'src', 'swagger.yaml'));
 
 export default function swaggerDocs(app) {
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  app.use('/swaggers', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 }
