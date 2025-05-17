@@ -11,7 +11,6 @@ app.use(cors())
 app.use(fileUpload())
 app.use(express.json())
 app.use(userRouter)
-
 const initApp = async () => {
     let statusdb = await mongoseDB_Connection()
     if(statusdb){

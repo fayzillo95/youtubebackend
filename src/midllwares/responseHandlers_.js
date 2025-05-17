@@ -1,7 +1,7 @@
 export const responeHandlers = (req, res, next) => {
     try {
-        res.status(req.status).json({
-            status: req.status,
+        res.status(req.status || 200).json({
+            status: req.status  || 200,
             succes:true,
             data:req.user
         });

@@ -1,27 +1,72 @@
 Method - > POST
-Url -> /api/users/register
-time -> ( 2025-05-16 _ 05:44:26.058) ....
-Type - > TypeError
-Error_message - > Cannot read properties of undefined (reading 'name')
-Steck file - > /Users/user/Desktop/YOUTUBE/backend/src/services/User.Service_.js
-Line -> 21
-END !!!
-____________________________________________________________________________________________________ 
-Method - > POST
 Url -> /api/user/movie
-time -> ( 2025-05-16 _ 06:59:18.920) ....
+time -> ( 2025-05-17 _ 11:56:19.101) ....
 Type - > TypeError
-Error_message - > Bind must be called on a function
-Steck file - > undefined
-Line -> undefined
-END !!!
-____________________________________________________________________________________________________ 
-Method - > POST
-Url -> /api/user/movie
-time -> ( 2025-05-16 _ 08:18:59.847) ....
-Type - > TypeError
-Error_message - > Cannot read properties of null (reading 'movie')
+Error_message - > Cannot read properties of undefined (reading 'size')
 Steck file - > /Users/user/Desktop/YOUTUBE/backend/src/midllwares/validationMidllwares_.js
 Line -> 45
+END !!!
+____________________________________________________________________________________________________ 
+Method - > POST
+Url -> /api/user/movie
+time -> ( 2025-05-17 _ 11:56:22.462) ....
+Type - > TypeError
+Error_message - > Cannot read properties of undefined (reading 'size')
+Steck file - > /Users/user/Desktop/YOUTUBE/backend/src/midllwares/validationMidllwares_.js
+Line -> 45
+END !!!
+____________________________________________________________________________________________________ 
+Method - > PUT
+Url -> /api/user/title/68287a199160ea01798ca50a
+time -> ( 2025-05-17 _ 12:03:30.405) ....
+Type - > TypeError
+Error_message - > Cannot read properties of undefined (reading 'service')
+Steck file - > /Users/user/Desktop/YOUTUBE/backend/src/controllers/User.Controller_.js
+Line -> 47
+END !!!
+____________________________________________________________________________________________________ 
+Method - > PUT
+Url -> /api/user/title/68287a199160ea01798ca50a
+time -> ( 2025-05-17 _ 12:05:47.425) ....
+Type - > TypeError
+Error_message - > Cannot read properties of undefined (reading 'service')
+Steck file - > /Users/user/Desktop/YOUTUBE/backend/src/controllers/User.Controller_.js
+Line -> 47
+END !!!
+____________________________________________________________________________________________________ 
+Method - > PUT
+Url -> /api/user/title/68287a199160ea01798ca50a
+time -> ( 2025-05-17 _ 12:07:14.766) ....
+Type - > TypeError
+Error_message - > Cannot read properties of undefined (reading 'service')
+Steck file - > /Users/user/Desktop/YOUTUBE/backend/src/controllers/User.Controller_.js
+Line -> 47
+END !!!
+____________________________________________________________________________________________________ 
+Method - > PUT
+Url -> /api/myaccaunt/update
+time -> ( 2025-05-17 _ 15:25:03.899) ....
+Type - > Error
+Error_message - > Expected "payload" to be a plain object.
+Steck file - > \Users\user\Desktop\YOUTUBE\backend\node_modules\jsonwebtoken\sign.js
+Line -> 44
+END !!!
+____________________________________________________________________________________________________ 
+Method - > PUT
+Url -> /api/myaccaunt/update
+time -> ( 2025-05-17 _ 15:29:26.460) ....
+Type - > ReferenceError
+Error_message - > user is not defined
+Steck file - > /Users/user/Desktop/YOUTUBE/backend/src/controllers/User.Controller_.js
+Line -> 55
+END !!!
+____________________________________________________________________________________________________ 
+Method - > DELETE
+Url -> /api/user/movie/6828d0878f196df3c86f0757
+time -> ( 2025-05-17 _ 18:20:52.638) ....
+Type - > TypeError
+Error_message - > Invalid status code: undefined. Status code must be an integer.
+Steck file - > \Users\user\Desktop\YOUTUBE\backend\node_modules\express\lib\response.js
+Line -> 65
 END !!!
 ____________________________________________________________________________________________________ 

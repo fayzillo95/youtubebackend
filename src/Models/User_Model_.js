@@ -13,6 +13,10 @@ const User_Model_  = model("User",Schema({
     profile_img:{
         type:String,
         required:true
+    },
+    tokenVersion:{
+        type:Number,
+        default:0
     }
 }))
 
