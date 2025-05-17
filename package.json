@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "node src/app.js",
-    "dev" : "nodemon src/app.js"
+    "dev": "nodemon src/app.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,8 @@
     "express-fileupload": "^1.5.1",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.14.2"
+    "mongoose": "^8.14.2",
+    "swagger-ui-express": "^5.0.1",
+    "yamljs": "^0.3.0"
   }
 }

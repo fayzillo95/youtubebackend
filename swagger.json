@@ -1,0 +1,171 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "YouTube Backend API",
+    "version": "1.0.0",
+    "description": "User va movie ma'lumotlarini boshqarish uchun yaratilgan REST API"
+  },
+  "servers": [
+    {
+      "url": "https://youtubebackend-0bwp.onrender.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/users/register": {
+      "post": {
+        "summary": "Yangi foydalanuvchini ro'yxatdan o'tkazish",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" },
+                  "password": { "type": "string" }
+                },
+                "required": ["username", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Foydalanuvchi muvaffaqiyatli qo‘shildi"
+          },
+          "400": {
+            "description": "Xatolik yuz berdi"
+          }
+        }
+      }
+    },
+    "/api/users/login": {
+      "post": {
+        "summary": "Foydalanuvchi tizimga kirishi",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" },
+                  "password": { "type": "string" }
+                },
+                "required": ["username", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login muvaffaqiyatli bo‘ldi"
+          },
+          "401": {
+            "description": "Login yoki parol noto‘g‘ri"
+          }
+        }
+      }
+    },
+    "/api/users/all": {
+      "get": {
+        "summary": "Barcha foydalanuvchilar ro‘yxati",
+        "responses": {
+          "200": {
+            "description": "Foydalanuvchilar ro‘yxati"
+          }
+        }
+      }
+    },
+    "/api/user/movies": {
+      "get": {
+        "summary": "Foydalanuvchining yuklangan videolari",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "Video ro‘yxati"
+          },
+          "401": {
+            "description": "Token noto‘g‘ri yoki muddati tugagan"
+          }
+        }
+      }
+    },
+    "/api/user/movie": {
+      "post": {
+        "summary": "Yangi video yuklash",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "video": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "title": {
+                    "type": "string"
+                  }
+                },
+                "required": ["video", "title"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Video yuklandi"
+          }
+        }
+      }
+    },
+    "/api/myaccaunt/update": {
+      "put": {
+        "summary": "Foydalanuvchi ma'lumotlarini yangilash",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" },
+                  "password": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ma'lumotlar yangilandi"
+          }
+        }
+      }
+    },
+    "/api/myaccaunt/logout": {
+      "delete": {
+        "summary": "Foydalanuvchini o‘chirish",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "Foydalanuvchi o‘chirildi"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

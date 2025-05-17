@@ -1,0 +1,194 @@
+openapi: 3.0.0
+info:
+  title: YouTube Backend API
+  version: 1.0.0
+  description: |
+    Foydalanuvchilarni ro'yxatdan o'tkazish, login qilish,
+    video yuklash, video boshqarish va akkaunt ma'lumotlarini yangilash uchun yaratilgan REST API.
+
+servers:
+  - url: https://youtubebackend-0bwp.onrender.com
+    description: Render serveri
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /api/users/register:
+    post:
+      summary: Foydalanuvchini ro'yxatdan o'tkazish
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: Foydalanuvchi muvaffaqiyatli ro'yxatdan o'tdi
+        '400':
+          description: Noto‘g‘ri ma'lumotlar yuborildi
+
+  /api/users/login:
+    post:
+      summary: Foydalanuvchini login qilish
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Muvaffaqiyatli login
+        '401':
+          description: Login xatoligi
+
+  /api/users/all:
+    get:
+      summary: Barcha foydalanuvchilar ro‘yxatini olish
+      responses:
+        '200':
+          description: Foydalanuvchilar ro‘yxati
+
+  /api/user/movies:
+    get:
+      summary: Foydalanuvchining yuklagan videolarini olish
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Foydalanuvchi videolari
+        '401':
+          description: Avtorizatsiya talab qilinadi
+
+  /api/users/files:
+    get:
+      summary: Barcha foydalanuvchilar videolarini olish
+      responses:
+        '200':
+          description: Barcha videolar ro'yxati
+
+  /api/user/movie:
+    post:
+      summary: Foydalanuvchi video yuklashi
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: Video muvaffaqiyatli yuklandi
+        '400':
+          description: Foydalanuvchi xatosi
+
+  /api/user/movie/title/{id}:
+    put:
+      summary: Videoning sarlavhasini yangilash
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+      responses:
+        '200':
+          description: Sarlavha yangilandi
+        '404':
+          description: Video topilmadi
+
+  /api/user/movie/{id}:
+    delete:
+      summary: Video o'chirish
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Video o'chirildi
+        '404':
+          description: Video topilmadi
+
+  /api/myaccaunt/update:
+    put:
+      summary: Foydalanuvchi ma'lumotlarini yangilash (username yoki password)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Foydalanuvchi ma'lumotlari yangilandi
+        '404':
+          description: Foydalanuvchi topilmadi
+
+  /api/myaccaunt/logout:
+    delete:
+      summary: Foydalanuvchini tizimdan chiqish
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Logout muvaffaqiyatli amalga oshirildi
+        '401':
+          description: Token noto‘g‘ri
+
+  /clear/logs:
+    get:
+      summary: Log faylni tozalash
+      responses:
+        '200':
+          description: Log fayli tozalandi

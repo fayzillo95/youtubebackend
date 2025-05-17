@@ -6,9 +6,11 @@ import fileUpload from "express-fileupload";
 import userRouter from "./routers/rutes.js";
 import errorMidllwares from "./midllwares/errorMidllwares.js";
 import path from "path"
+import swaggerDocs from './swagger.js';
 
 const app = express()
 app.use(cors())
+swaggerDocs(app);
 app.use(fileUpload())
 app.use(express.json())
 app.use(userRouter)
