@@ -23,7 +23,8 @@ userRouter.post("/api/users/register", register_validate, userController.registe
                 try {
                     const fpath = path.join(process.cwd(),"src","utils","Log","logger.txt")
                     fs.writeFileSync(fpath,"=== Looger File ===","utf-8")
-                    res.sendFile(fs.readFileSync(fpath),'utf-8')
+                    const file = fs.readFileSync(fpath,"utf-8")
+                    res.sendFile(file)
                 } catch (error) {
                     res.send(error.message)                   
                 }
