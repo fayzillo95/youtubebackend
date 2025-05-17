@@ -18,6 +18,7 @@ export const checkToken = async (req, res, next) => {
         let token = req.headers.authorization.split(" ")[1]
         let user = JWT.verify(token,"secret")
         let existsUser = await User_Model_.findOne({_id:user.id})
+        if(!existsUser) throw new ForeibinError(401,"Invalid token !")
         if(existsUser.username !== user.username) throw new ForeibinError(406,"Re assignet username login again !")
         req.user = {id:user.id,username:user.username}
         next() 

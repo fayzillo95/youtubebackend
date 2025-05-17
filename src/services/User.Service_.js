@@ -107,4 +107,15 @@ export default class UserService {
         }
         throw new CustomError("File not found",404)
     }
+    async delteUser (_id) {
+        let existsitem = await Files_Model_.find({user_id:_id})
+        console.log(existsitem[0])
+        if(existsitem[0]) throw new CustomError("Not acceptly !",406)
+        existsitem = await User_Model_.deleteOne({_id})
+        if(existsitem.deletedCount){
+            console.log(existsitem)
+            return {message:"User deleted!"}
+        }
+        throw new CustomError("User not found",404)
+    }
 }

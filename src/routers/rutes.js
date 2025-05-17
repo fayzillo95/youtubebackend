@@ -17,4 +17,5 @@ userRouter.post("/api/users/register", register_validate, userController.registe
           .put("/api/user/title/:id",checkToken,userController.updateTitle.bind(userController),responeHandlers) 
           .put("/api/myaccaunt/update",checkToken,userController.updateUser.bind(userController),responeHandlers)
           .delete("/api/user/movie/:id",checkToken,userController.deleteMovie.bind(userController),responeHandlers)
+          .delete("/api/user/logout",checkToken,userController.delteUser.bind(userController),responeHandlers)
 export default userRouter

@@ -77,4 +77,12 @@ export default class UserController{
             next(error)
         }
     }
+    async delteUser(req, res, next) {
+        try {
+            req.user = await this.service.delteUser(req.user.id)
+            next()
+        } catch (error) {
+            next(error)
+        }
+    }
 }
