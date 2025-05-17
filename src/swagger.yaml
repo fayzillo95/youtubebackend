@@ -38,10 +38,6 @@ paths:
       responses:
         '201':
           description: Foydalanuvchi muvaffaqiyatli ro'yxatdan o'tdi
-        'data':
-        {
-            'accessToken' :String
-        }  
         '400':
           description: Noto‘g‘ri ma'lumotlar yuborildi
 
